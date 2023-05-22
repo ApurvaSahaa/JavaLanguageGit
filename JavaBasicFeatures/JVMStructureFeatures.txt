@@ -1,0 +1,83 @@
+---> JVM - Java Virtual Machine
+	--- Consists of the ClassLoader and JVM memory and Execution engine.
+
+	--- ClassLoader - It mainly loads the .class file input into the JVM method area to create an object of the type CLASS for the file. It has a subsystem to
+		load the classes into memory and prepare them for execution -
+		-- Loading - In this stage the .class file is loaded into the JVM Method Area and a CLASS type pbject with some information is created. The information
+				can be accessed using the .getClass() method and it may contain info. like current class name, parent class name, methodNames etc. There are
+				3 types of class loaders here -
+			- BootStrap class loader - used to load classes that are present in the "JAVA_HOME/jre/lib" or rt.jar file and are implemented using native languages 
+								like C and C++.
+			- Extension class loader - used to load classes in the "JAVA_HOME/jre/lib/ext" file or in the "java.ext.dirs" systems property folder. Implemented 
+								by the sun.misc.Launcher$ExtClassLoader class.
+			- System/Application class loader - used to load classes that are mentioned in the system CLASSPATH. Implemented by sun.misc.Launcher$AppClassLoader 
+									class.
+		-- Linking - In this stage the CLASS object is prepared for execution through 3 steps
+			- Verification - here JVM checks if the code is written with the correct syntax and hence is correct and secure and also if the code is compiled
+						by a valid compiler.
+			- Preparation - here JVM allocates memory for the static fields and intializes them to their default value if specified.
+			- Resolution - here the symbolic references are turned into direct references i.e and dependencies are searched for in the method area and then loaded
+						into memory.
+		-- Initialization - In this stage the static initialization code for the class is run. This code initializes the class's static fields to their desired
+						values and carries out any other necessary setup. There are 3 ways to trigger this initialization code - 
+				- when an instance of the class is created
+				- when any static method of the class is run
+				- when any static field of the class is accessed
+
+	--- JVM memory - JVM memory is divided into 5 parts - 
+		-- Method area - in Method area all class level information like class name, immediate parent class name, methods and variable names etc. are stored. There
+					is only one Method area per JVM and is a shared resource.
+		-- Heap area - in Heap area information on all the objects and static methods and variables are stored. There is only one Heap area per JVM and is a 
+					shared resource.
+		-- Stack area - for every thread JVM creates a runtime stack which is stored here in the stack area. Every block of this stack is called activation record/
+					stack frame which stores methods calls. All local variables of that method are stored in a corresponding frame. After a thread terminates,
+					it's runtime stack will be destroyed by JVM. It is not a shared resource.
+		-- PC registers - this part of the JVM memory stores address of current execution instruction of a thread. Obviously, each thread has separate PC registers.
+		-- Native Stack Area - For every thread, a Native stack is created. It stored native method information
+
+	--- Garbage Collection - This is the feature that allows for automatic memory management by destroying objects that are unreferenced.
+		-- Minor or Incremental Garbage collection - It is said to have occured when unreachable objects in the young generation heap memory are removed.
+		-- Major or Full Garbage Collection - It is said to have occured when the heap objects that survived  the minor garbage collection are copied into the old
+			generation, garbage collection happens less frequently in the old generation.
+
+{
+	Important Concepts Related to Garbage Collection in Java
+	
+	1. Unreachable objects: An object is said to be unreachable if it doesn’t contain any reference to it. Also, note that objects which are part of the island of isolation are also unreachable.
+
+	2. Eligibility for garbage collection: An object is said to be eligible for GC(garbage collection) if it is unreachable. After i = null, integer object 4 in the heap 	area is suitable for garbage 
+		collection in the above image.
+
+	Ways to make an object eligible for Garbage Collector
+		Even though the programmer is not responsible for destroying useless objects but it is highly recommended to make an object unreachable(thus eligible for GC) if 	it is no longer required.
+		There are generally four ways to make an object eligible for garbage collection.
+		- Nullifying the reference variable
+		- Re-assigning the reference variable
+		- An object created inside the method
+		- Island of Isolation
+		Ways for requesting JVM to run Garbage Collector
+		Once we make an object eligible for garbage collection, it may not destroy immediately by the garbage collector. Whenever JVM runs the Garbage Collector program, then only the object will be destroyed. 
+			But when JVM runs Garbage Collector, we can not expect.
+		We can also request JVM to run Garbage Collector. There are two ways to do it : 
+		- Using System.gc() method: System class contain static method gc() for requesting JVM to run Garbage Collector.
+		- Using Runtime.getRuntime().gc() method: Runtime class allows the application to interface with the JVM in which the application is running. Hence by using its gc() method, we can request JVM to run Garbage Collector.
+		There is no guarantee that any of the above two methods will run Garbage Collector.
+		The call System.gc() is effectively equivalent to the call : Runtime.getRuntime().gc()
+
+	3. Finalization
+		Just before destroying an object, Garbage Collector calls finalize() method on the object to perform cleanup activities. Once finalize() method completes, Garbage Collector destroys that object.
+		finalize() method is present in Object class with the following prototype.
+		protected void finalize() throws Throwable
+		Based on our requirement, we can override finalize() method for performing our cleanup activities like closing connection from the database. 
+
+		The finalize() method is called by Garbage Collector, not JVM. However, Garbage Collector is one of the modules of JVM.
+		Object class finalize() method has an empty implementation. Thus, it is recommended to override the finalize() method to dispose of system resources or perform other cleanups.
+		The finalize() method is never invoked more than once for any object.
+		If an uncaught exception is thrown by the finalize() method, the exception is ignored, and the finalization of that object terminates.
+
+	4. Advantages of Garbage Collection in Java
+		The advantages of Garbage Collection in Java are:
+
+		- It makes java memory-efficient because the garbage collector removes the unreferenced objects from heap memory.
+		- It is automatically done by the garbage collector(a part of JVM), so we don’t need extra effort.
+}

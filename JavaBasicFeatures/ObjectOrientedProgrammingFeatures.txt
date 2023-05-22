@@ -1,0 +1,45 @@
+---> OOP - Object Oriented Programming
+	This is just a type of programming paradigm like Procedural programming. This type of programming helps increase Code reusability, readability and security.
+
+	--- Object - Anything that has a state and behaviour can be modeled into an object in java.
+		-- State - is represented using variables
+		-- Behaviour - is represented using methods/functions
+	--- Class - This is basically the blueprint for an object and helps in initializing objects of similar types
+	--- Inheritance - This is when one class inherits attributes and methods from another class. The inheriting class is called a subclass and the one being
+		inherited from is called the parent class.
+		-- Simple Inheritance - When one class inherits from another class. class B extends class A.
+		-- Multi-Level Inheritance - When the inheritance chain goes beyond 2 classes. class C extends class B -> but class B extends class A.
+		-- Multiple Inheritance - This is not supported by java mainly due to the diamond problem. 
+			- class B extends class A and class C extends class A --> then class D extends class B, class C. This leads to an ambiguity problem since if 
+				both class B and class C have inherited and implemented the same method from class A, class D then faces a problem of which method to
+				inherit and implement between class B and class C.
+			- To solve this java allows multiple interface implementation.
+	--- Polymorphism - This is when the same methodName is used to implement different methods. This makes the code mroe readable and simpler rather than using
+		distinct methodName s each time.
+		-- Static polymorphism - This happens during compile time and within the class. This is when the same methodName is used to carry out similar implementation
+			but is called using different types of parameters or different number of parameters.
+			example - add(int i, int j) and add(double i, double j) within the add class.
+						- This is called Method OverLoading
+		-- Dynamic polymorphism - This happens during runtime and inter - class. This is when the same method that is inherited by different classes are implemented
+			differently and so function in different ways.
+			example - sound("roar") and sound("bark") is implemented by two classes lion() and dog() inheriting sound from class animal().
+						- This is called Method Overriding
+	--- Encapsulation - This is when we hide the complexity and inner working of the class and only expose some get() or set() methods to the user. This increases
+		security by not giving direct access to important information to everyone.
+		-- Abstraction - This is when we make the attributes or variables private but create getters and setters to set or change the attributes to affect the methods.
+			Direct access to the type of the attributes are not provided and if we want to keep the value also set we can use the final non-access modifier keyword.
+		-- encapsulation - This is when we wrap certain code blocks into a bigger chunk like classes to improve readability and reusability of code.
+	--- Association - This as the word suggests just represents a relationship between two objects. The relationship can be one to one, one to many, many to one and 
+		many to many.
+		-- Aggregation - This is a special type of association that represents a 'has-a' relationship. In this case if any one of the class in the relationship
+			is destroyed the other class can exist on it's own. example -  A college has a student. If the college is removed the student is still present and 
+			vice-versa.
+		-- Composition - This is another special association that represents a 'part-of' relationship. In this case if you remove one class the other class does not
+			have any meaning of it's own. example - A heart is a part of the human object. If the heart is destroyed the human object is not complete and does not
+			have any meaning and vice-versa.
+	--- Cohesion - This is when it shows that a particular class has been created with a singular focus in mind. If the methods and attributes in the class are highly
+		similar and seem related to each other the class is highly cohesive and if not it is not cohesive. exmaple - If and add() method and charCounter() method are
+		place inside a single class we can say with relative certainty that the class is not cohesive since those two methods don't seem to be related at a glance.
+	--- Coupling - This is when one class is dependent on other classes for its's functioning. If if is reliant heavily on the other class there is tight coupling but
+		if the dependence is really light then it's low coupling. Low coupling is preferred as it helps make it easier to change code implementations for developers
+		later down the line.

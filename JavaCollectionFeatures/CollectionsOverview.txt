@@ -1,0 +1,43 @@
+---> Collection Framework - 
+	--- This is a framework created to provide 3 major advantages - 
+		-- Consistent API - The collection framework provides a few basic interfaces in the form of Collection, Set, List and Map making all the classes that 
+						implement these interface have some methods in common.
+		-- Reduces Programming effort - A programmer no longer has to worry about the design of the collection but can focus on it's best use in his program. 
+						Therefore, the basic concept of OOP ie abstraction has been successfully implemented.
+		-- Increases program speed and quality - Increases performance by providing high-performance implementations of useful data structures and algorithms.
+
+	--- Heirarchy of the collection framework - 
+		-- Iterable interface - only provides one method declaration i.e Itarator iterator(); method. This interface is extended by the Collection interface and thus
+						provides a way to traverse the elements in every class that implements the Collection interface.
+
+		-- Collection (I)
+			__ Set (I)
+				-> HashSet (C)
+				-> LinkedHashSet (C)
+				__ Sorted Set (I)
+					-> TreeSet (C)
+			
+			__ Queue (I)
+				-> Priority Queue (C)
+				__ Deque (I)
+					-> ArrayDeque (C)
+					-> LinkedList (C)
+			
+			__ List (I)
+				-> ArrayList (C)
+				-> Vector (C)
+					-> Stack (C)
+				-> LinkedList (C)
+
+		-- Map (I)
+			-> AbstractMap (C)
+				-> HashMap (C)
+				-> EnumMap (C)
+			
+			__ SortedMap (I)
+				__ NavigableMap (I)
+					-> TreeMap (C)
+
+	--- Collection - This interface extends the Iterable interface and is implemented by all the classes in the collection. This interface contains all the basic 
+				methods which every collection has like adding data, removing data, clearing data, checking if collection contains data etc. These common methods
+				provide a universal feel for all the classes making it easier to remember and work with different classes in the collection.
