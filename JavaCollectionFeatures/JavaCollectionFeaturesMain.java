@@ -6,4 +6,8 @@ public class JavaCollectionFeaturesMain {
         return JavaCollectionFilePaths.getCollectionsOverview1FilePath();
     }
 
+    public static String getCollectionsOverview2FileName(){
+        return JavaCollectionFilePaths.getCollectionsOverview2FilePath();
+    }
+
 }

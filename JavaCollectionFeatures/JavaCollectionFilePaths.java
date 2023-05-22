@@ -6,7 +6,9 @@ public class JavaCollectionFilePaths {
         return "JavaCollectionFeatures/CollectionsOverview1.txt";
     }
 
-
+    public static String getCollectionsOverview2FilePath(){
+        return "JavaCollectionFeatures/CollectionsOverview2.txt";
+    }
 
 
 }

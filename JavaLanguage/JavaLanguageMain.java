@@ -1,6 +1,7 @@
 package JavaLanguage;
 
 import JavaBasicFeatures.JavaBasicFeaturesMain;
+import JavaCollectionFeatures.JavaCollectionFeaturesMain;
 
 public class JavaLanguageMain {
 
@@ -20,5 +21,16 @@ public class JavaLanguageMain {
         return ReadFile.readFileContent(oopFileName);
     }
 
+    // JavaCollectionFeatures methods
+
+    public static String readCollectionOverview1(){
+        String collectionOverview1FileName = JavaCollectionFeaturesMain.getCollectionsOverview1FileName();
+        return ReadFile.readFileContent(collectionOverview1FileName);
+    }
+
+    public static String readCollectionOverview2(){
+        String collectionOverview2FileName = JavaCollectionFeaturesMain.getCollectionsOverview1FileName();
+        return ReadFile.readFileContent(collectionOverview2FileName);
+    }
 
 }
