@@ -1,0 +1,54 @@
+--- List - Child of the Collection Interface. Dedicated to all list type in which we can store all the ordered collection of the objects. Allows duplicate data to
+			be present. This interface is implemented by ArrayList, Vector and LinkedList. So this means we can instantiate a list object using any of these
+			classes.
+		-- ArrayList - This class provides us with dynamic arrays which can change size as we add or remove objects from the list object. We can randomly access
+					any object in the list using the index. We cannot use ArrayList for primitive data types like int, char etc. and need to use their 
+					wrapper classes. 
+		-- LinkedList - This class provides us with doubly linked list datastructure which is a linear data structure where elements are not stored in contiguous
+					locations and every element is a separate object with data part and address part. They are linked using pointers and addresses and each
+					element is known as a node.
+		-- Vector - This class also provides us with dynamic arrays and is mostly identical to ArrayList except in the behaviour that Vectors are synchronized while
+					ArrayList are not synchronized.
+			- Stack - This model implements the Stack data structure and is based on the priciple of last-in-first-out (LIFO). In addition to basic push and pop it
+					also provides us with empty, search and peek operations.
+					It is a subclass of vector and a legacy class. It is also threadsafe which might be overhead in places where we don't need thread safety.
+					An alternative is to use ArrayDeque which is a faster implementation of Arrays and is not threadsafe.
+
+	--- Queue - This interface maintains the FIFO (first-in-first-out) order similar to a real world queue. This interface is dedicated to storing all elements where
+			the order of the elements matter. 
+		-- Priority queue - It implements the FIFO concept of a queue but based on the priority of the element. PQ is based on the priority heap datasrtucture and 
+						the elements are ordered according to the natural ordering or by a Comparator provided at the construction time of the queue. 
+		-- Deque - This is a slight variation of the queue data structure. Deque is a doubly ended queue where you can handle elements both at the head and tail of
+				the queue. 
+			- ArrayDeque - This class provides us with a way to apply resizable-array. This is a special kind of array that grows as needed and allows users to 
+						add and remove elements from both sides of the queue. 
+
+	--- Set - This is an unordered collection of objects in which duplicate values cannot be stored. This is used when we want to avoid the duplication of objects 
+			and only want to store unique objects. 
+		-- HashSet - This is an inherent implementation of the hashtable data structure. The objects that we insert are not guaranteed to be inserted in the same
+					order but according to the hashcode. This class also allows insertion of NULL elements. 
+		-- LinkedHashSet - This is similar to hashSet but uses a doubly linked list to store the data and retains the ordering of the elements. 
+
+		-- SortedSet - This is an interface that is similar to Set but this interface has extra methods to maintain the ordering of the elements. 
+			- TreeSet - This class uses a Tree data structure for storage. The ordering of elements is maintained by a set using their natural ordering whether
+			    a comparator is provided. This must be consistent with equals if it is to correctly implement the Set interface.
+
+	--- Map - This is a data structure that supports the key-value mapping of data. This interface does not support duplicate keys because the same key cannot have 
+			multiple mappings, however we can have duplicate values in different keys. This is useful when we want to conduct operations using the key.
+		-- HashMap - This provides the basic implementation of the Map interface. HashMap uses a technique called Hashing which converts a large string to a smaller
+				one unique to the larger string. HashSet also internally uses a HashMap. To find the values we must know the corresponding key.
+		-- TreeMap - The map is sorted according to the natural ordering of the keys or by a Comparator provided at creation time. This provides an efficient way to
+					sort and store key value pairs. This is implemented using a Red-Black Tree which is a type of self balanced binary search tree. This 
+					provides an efficient performance for operations like adding, removing, retrieving with an average complexity of O(log n). This implements
+					the SortedMap interface which in turn extends the Map interface.
+		-- AbstractMap Class - This implements the Map interface but is an abstract class and provides methods of a multitude of classes that extend this class.
+			- HashMap -> LinkedHashMap
+			- IdentityHashMap
+			- WeakHashMap
+			- TreeMap
+			- EnumMap
+			- ConcurrentHashMap
+			- ConcurrentSkipListMap
+		-- NavigableMap - It is an extension of SortedMap which provides convenient navigation methods like lowerKey, floorKey, ceilingKey and higherKey, and along 
+					with this popular navigation method. It also provide ways to create a Sub Map from existing Map in Java e.g. headMap whose keys are less than the specified key, 
+					tailMap whose keys are greater than the specified key, and a subMap which strictly contains keys which fall between toKey and fromKey.
